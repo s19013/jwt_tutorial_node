@@ -1,6 +1,8 @@
 // 必要なパッケージ用意
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const config = require('./config');
+const auth = require('./auth');
 
 // サーバー準備
 const app = express();
@@ -33,4 +35,10 @@ app.post("/register",(req,res) => {
     }
 
     res.status(200).json(body)
+})
+
+app.get('/login',auth,(req,res) => {
+    res.status(200).json({
+        msg:"承認成功"
+    })
 })
